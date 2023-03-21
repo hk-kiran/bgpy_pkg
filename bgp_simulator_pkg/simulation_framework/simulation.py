@@ -36,7 +36,8 @@ class Simulation:
                  propagation_rounds: int = 1,
                  output_path: Path = Path("/tmp/graphs"),
                  parse_cpus: int = 8,
-                 python_hash_seed: Optional[int] = None):
+                 python_hash_seed: Optional[int] = None,
+                 caida_kwargs = None):
         """Downloads relationship data, runs simulation
 
         Graphs -> A list of graph classes
@@ -61,6 +62,7 @@ class Simulation:
         self.parse_cpus: int = parse_cpus
         self.scenarios: Tuple[Scenario, ...] = scenarios
         self.python_hash_seed = python_hash_seed
+        self.caida_graphcls_kwargs = caida_kwargs
         # All scenarios must have a uni que graph label
         labels = [x.graph_label for x in self.scenarios]
         assert len(labels) == len(set(labels)), "Scenario labels not unique"
@@ -202,6 +204,7 @@ class Simulation:
         # Making nothing a reference does nothing
         engine = CaidaCollector(BaseASCls=BGPSimpleAS,
                                 GraphCls=SimulationEngine,
+                                GraphCls_kwargs=self.caida_graphcls_kwargs,
                                 ).run(tsv_path=None)
         # Must deepcopy here to have the same behavior between single
         # And multiprocessing
