@@ -178,7 +178,7 @@ class Simulation:
         # TODO: modify the following to use imap instead
         # Pool is much faster than ProcessPoolExecutor
         with Pool(parse_cpus) as pool:
-            return pool.imap(self._run_chunk,  # type: ignore
+            return pool.imap(self._run_imap_chunk,  # type: ignore
                                 chunks,
                                 chunksize=int(len(chunks)/parse_cpus))
 
