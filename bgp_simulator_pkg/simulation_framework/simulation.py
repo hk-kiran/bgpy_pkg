@@ -182,8 +182,8 @@ class Simulation:
                                 chunks,
                                 chunksize=int(len(chunks)/parse_cpus))
             # Run the chunks
-            for it in it_map:
-                pass
+            return [result for result in it_map]
+
 
 ############################
 # Data Aggregation Methods #
@@ -202,8 +202,8 @@ class Simulation:
             }
         :return:
         """
-        self._run_chunk(chunk_id=chunk['chunk_id'],
-                        percent_adopt_trials=chunk['percent_adopt_trials'])
+        return self._run_chunk(chunk_id=chunk['chunk_id'],
+                               percent_adopt_trials=chunk['percent_adopt_trials'])
 
 
     def _run_chunk(self,
