@@ -174,37 +174,16 @@ class Simulation:
 
         # Check if the python_hash_seed is set properly
         self._check_python_hash_seed()
-        chunks = [{'chunk_id': chunk_id, 'percent_adopt_trials': chunk} for chunk_id, chunk in enumerate(self._get_chunks(parse_cpus))]
         # TODO: modify the following to use imap instead
         # Pool is much faster than ProcessPoolExecutor
         with Pool(parse_cpus) as pool:
-            it_map = pool.imap(self._run_imap_chunk,  # type: ignore
-                                chunks,
-                                chunksize=int(len(chunks)/parse_cpus))
-            # Run the chunks
-            return [result for result in it_map]
+            return pool.starmap(self._run_chunk,  # type: ignore
+                                enumerate(self._get_chunks(parse_cpus)))
 
 
 ############################
 # Data Aggregation Methods #
 ############################
-
-    def _run_imap_chunk(self, chunk: Dict[str, Any]):
-        """
-        The chunk is just a dict of the same args used in _run_chunk
-        :param chunk:
-            {
-                'chunk_id': int,
-                'percent_adopt_trials': List[Tuple[Union[float,
-                                                    SpecialPercentAdoptions],
-                                                    int]],
-                'single_proc': False
-            }
-        :return:
-        """
-        return self._run_chunk(chunk_id=chunk['chunk_id'],
-                               percent_adopt_trials=chunk['percent_adopt_trials'])
-
 
     def _run_chunk(self,
                    chunk_id: int,
