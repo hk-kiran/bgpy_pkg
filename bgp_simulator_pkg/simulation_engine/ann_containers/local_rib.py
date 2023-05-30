@@ -36,8 +36,8 @@ class LocalRIB(AnnContainer):
 
     def remove_ann(self, prefix: str):
         """Removes announcement from local rib based on prefix"""
-
-        del self._info[prefix]
+        if prefix in self._info:
+            del self._info[prefix]
 
     def prefix_anns(self):
         """Returns all prefixes and announcements zipped"""
