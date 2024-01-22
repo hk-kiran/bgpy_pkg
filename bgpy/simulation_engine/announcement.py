@@ -23,13 +23,25 @@ class Announcement(YamlAble):
     as_path: tuple[int]
     timestamp: int
     seed_asn: Optional[int]
-    roa_valid_length: Optional[bool]
-    roa_origin: Optional[int]
     recv_relationship: "Relationships"
     withdraw: bool = False
     traceback_end: bool = False
-    # NOTE: must use list here for C++ compatability
-    communities: tuple[str, ...] = ()
+    # ROV attributes
+    roa_valid_length: Optional[bool] = None
+    roa_origin: Optional[int] = None
+    # ROV++ attributes
+    holes: tuple[str] = ()
+    blackhole: bool = False
+    preventive: bool = False
+    attacker_on_route: bool = False
+    # BGPSec attributes
+    next_hop_as: Optional[int] = None
+    bgpsec_signatures: tuple[int] = ()
+    # Pathend attributes
+    pathend: Optional[bool] = None
+
+
+
 
     def prefix_path_attributes_eq(self, ann: Optional["Announcement"]) -> bool:
         """Checks prefix and as path equivalency"""
