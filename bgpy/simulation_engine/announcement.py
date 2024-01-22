@@ -30,7 +30,6 @@ class Announcement(YamlAble):
     roa_valid_length: Optional[bool] = None
     roa_origin: Optional[int] = None
     # ROV++ attributes
-    holes: tuple[str] = ()
     blackhole: bool = False
     preventive: bool = False
     attacker_on_route: bool = False

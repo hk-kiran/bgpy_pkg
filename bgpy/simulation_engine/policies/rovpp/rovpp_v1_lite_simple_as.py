@@ -1,5 +1,3 @@
-from typing import Dict, Tuple
-
 from frozendict import frozendict
 
 from bgpy.simulation_engine.announcement import Announcement as Ann  # noqa
@@ -11,44 +9,27 @@ from bgpy import (
     NonRoutedSuperprefixPrefixHijack,
 )
 
-from ...rovpp_ann import ROVPPAnn
 
-
-class ROVPPV1LiteSimpleAS(ROVSimpleAS):
+class ROVPPV1LiteSimplePolicy(ROVSimplePolicy):
     name = "ROV++V1 Lite Simple"
 
-    def __init__(self, *args, **kwargs):
-        super(ROVPPV1LiteSimpleAS, self).__init__(*args, **kwargs)
-        self.temp_holes = frozendict()
-
-    def _policy_propagate(self, _, ann, *args) -> bool:
+    def _policy_propagate(self, _, ann, *args) -> bool:  # type: ignore
         """Only propagate announcements that aren't blackholes"""
 
         # Policy handled this ann for propagation (and did nothing)
         return bool(ann.blackhole)
 
-    def receive_ann(self, ann: Ann, *args, **kwargs):  # type: ignore
-        """Ensures that announcments are ROV++ and valid"""
-
-        if not isinstance(ann, ROVPPAnn):
-            raise NotImplementedError("Not an ROV++ Announcement")
-        return super(ROVPPV1LiteSimpleAS, self).receive_ann(ann, *args, **kwargs)
-
-    # Mypy errors out when getting subclass of this
     def process_incoming_anns(
-        self,  # type: ignore
+        self,
         *,
         from_rel: Relationships,
         propagation_round: int,
         scenario: "Scenario",
         reset_q: bool = True
-    ):
+    ) -> None:
         """Processes all incoming announcements"""
 
-        # Super janky mutability garbage. Should be fixed later.
-        self.temp_holes: Dict[
-            Ann, Tuple[Ann]  # type: ignore
-        ] = self._get_ann_to_holes_dict(scenario)
+        temp_holes: dict[Ann, tuple[Ann, ...]] = self._get_ann_to_holes_dict(scenario)
         super(ROVPPV1LiteSimpleAS, self).process_incoming_anns(
             from_rel=from_rel,
             propagation_round=propagation_round,
@@ -57,9 +38,7 @@ class ROVPPV1LiteSimpleAS(ROVSimpleAS):
         )
         self._add_blackholes(self.temp_holes, from_rel, scenario)
 
-        # It's possible that we had a previously valid prefix
-        # Then later recieved a subprefix that was invalid
-        # So we must recount the holes of each ann in local RIB
+        # Special case for multi round propagation
         self._recount_holes(propagation_round)
 
         self._reset_q(reset_q)
