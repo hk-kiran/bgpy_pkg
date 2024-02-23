@@ -4,7 +4,7 @@ ENV DEBIAN_FRONTEND noninteractive
 RUN apt update && \
     apt -y install gcc mono-mcs && \
     rm -rf /var/lib/apt/lists/*
-RUN apt install -y build-essential
+RUN apt install -y build-essentials
 RUN apt install -y g++
 RUN apt install -y wget
 RUN apt install -y git
