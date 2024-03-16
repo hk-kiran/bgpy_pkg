@@ -59,4 +59,6 @@ example_configs = [
     ex_config_027,
 ]
 
+example_configs = []
+
 __all__ = ["example_configs"]

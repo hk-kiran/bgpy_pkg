@@ -38,10 +38,10 @@ as_graph_info = ASGraphInfo(
 )
 
 
-class Custom01ValidPrefix(ValidPrefix):
+class Custom04ValidPrefix(ValidPrefix):
     """Add a better announcement in round 2 to cause withdrawal"""
 
-    min_propagation_rounds = 3
+    min_propagation_rounds = 4
 
     def post_propagation_hook(
         self,
@@ -65,14 +65,34 @@ class Custom01ValidPrefix(ValidPrefix):
                 (3,),
             )
             engine.as_graph.as_dict[3].policy._local_rib.add_ann(ann)
-            Custom01ValidPrefix.attacker_asns = frozenset({3})
+            Custom04ValidPrefix.attacker_asns = frozenset({3})
             self.attacker_asns: frozenset[int] = frozenset({3})
 
-internal_config_001 = EngineTestConfig(
-    name="internal_001",
+        if propagation_round == 2:  # third round
+            ann = deepcopy(
+                engine.as_graph.as_dict[3].policy._local_rib.get(Prefixes.PREFIX.value)
+            )
+            object.__setattr__(ann, "withdraw", True)
+            # ann.withdraw = True
+            # Remove the original announcement from 3
+            # The one from 2 is now the next-best
+            engine.as_graph.as_dict[3].policy._local_rib.pop(
+                Prefixes.PREFIX.value, None
+            )
+            engine.as_graph.as_dict[3].policy._ribs_out.remove_entry(
+                1, Prefixes.PREFIX.value
+            )
+            engine.as_graph.as_dict[3].policy._send_q.add_ann(1, ann)
+            Custom04ValidPrefix.attacker_asns = frozenset({3})
+            self.attacker_asns: frozenset[int] = frozenset({3})
+        
+
+
+internal_config_004 = EngineTestConfig(
+    name="internal_004",
     desc="Test withdrawal mechanism caused by better announcement",
     scenario_config=ScenarioConfig(
-        ScenarioCls=Custom01ValidPrefix,
+        ScenarioCls=Custom04ValidPrefix,
         BasePolicyCls=BGPFull,
         override_victim_asns=frozenset({2}),
         override_non_default_asn_cls_dict=frozendict(),
