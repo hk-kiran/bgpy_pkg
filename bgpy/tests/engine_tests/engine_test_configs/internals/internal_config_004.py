@@ -34,11 +34,14 @@ as_graph_info = ASGraphInfo(
     ),
 )
 
+class CustomRFAttack(RouteFlapAttack):
+    random_flapping = False
+
 internal_config_004 = EngineTestConfig(
     name="internal_004",
     desc="Test withdrawal mechanism caused by better announcement",
     scenario_config=ScenarioConfig(
-        ScenarioCls=RouteFlapAttack,
+        ScenarioCls=CustomRFAttack,
         BasePolicyCls=RouteFlapDampening,
         override_victim_asns=frozenset({2}),
         override_attacker_asns=frozenset({3}),

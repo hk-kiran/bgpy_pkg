@@ -147,7 +147,7 @@ class Announcement(YamlAble):
         """
 
         # check if the announce
-        if self.no_of_times_announced <= self.dampening_threshold:
+        if self.no_of_times_announced < self.dampening_threshold:
             return True
         return False
 

@@ -1,6 +1,6 @@
 from typing import Optional, TYPE_CHECKING
 from bgpy.simulation_framework.scenarios.roa_info import ROAInfo
-
+import random
 from bgpy.enums import SpecialPercentAdoptions, Timestamps, Prefixes
 from ..scenario import Scenario
 
@@ -13,6 +13,7 @@ if TYPE_CHECKING:
 class RouteFlapAttack(Scenario):
     """Route flap attack engine input"""
     min_propagation_rounds = 5
+    random_flapping = True,
 
     def _get_announcements(self, *args, **kwargs) -> tuple["Ann", ...]:
         """Returns the two announcements seeded for this engine input
@@ -67,27 +68,28 @@ class RouteFlapAttack(Scenario):
         elif propagation_round >= self.min_propagation_rounds:
             raise NotImplementedError
 
-
-        announcements: list["Ann"] = list()  # type: ignore
-        for victim_asn in self.victim_asns:
-            announcements.append(
-                self.scenario_config.AnnCls(
-                    prefix=Prefixes.PREFIX.value,
-                    as_path=(victim_asn,),
-                    timestamp=Timestamps.VICTIM.value,
-                )
-            )
+        if self.random_flapping:
+            print("RANDOM FLAPPING")
+        announcements: list["Ann"] = list(self.announcements)  # type: ignore
         for attacker_asn in self.attacker_asns:
-            announcements.append(
-                self.scenario_config.AnnCls(
-                    prefix=Prefixes.PREFIX.value,
-                    as_path=(attacker_asn,),
-                    timestamp=Timestamps.ATTACKER.value,
-                    no_of_times_announced=propagation_round,
-                )
-            )
+                for prefix, ann in engine.as_graph.as_dict[
+                    attacker_asn
+                ].policy._local_rib.items():
+                    announcements.remove(
+                        ann
+                    )
+                    announcements.append(
+                        ann.copy(
+                            {
+                            "no_of_times_announced": 
+                            (ann.no_of_times_announced + random.randint(0, 1))
+                              if self.random_flapping 
+                              else (ann.no_of_times_announced + 1)
+                            }
+                        )
+                    )
 
-        # print("ROUND: ", propagation_round, " ANNOUNCEMENTS:", announcements)
+        print("ROUND: ", propagation_round, " ANNOUNCEMENTS:", announcements)
         self.announcements = tuple(announcements)
         self.setup_engine(engine)
         engine.ready_to_run_round = propagation_round+1

@@ -27,8 +27,8 @@ as_graph: !yamlable/CAIDAASGraph
             recv_relationship: !simulator_codec/Relationships
               name: PROVIDERS
               value: 1
-            roa_origin: null
-            roa_valid_length: null
+            roa_origin: 2
+            roa_valid_length: true
             seed_asn: null
             timestamp: 0
             traceback_end: false
@@ -61,8 +61,8 @@ as_graph: !yamlable/CAIDAASGraph
             recv_relationship: !simulator_codec/Relationships
               name: ORIGIN
               value: 4
-            roa_origin: null
-            roa_valid_length: null
+            roa_origin: 2
+            roa_valid_length: true
             seed_asn: 2
             timestamp: 0
             traceback_end: false
@@ -88,14 +88,14 @@ as_graph: !yamlable/CAIDAASGraph
             bgpsec_next_asn: null
             dampening_threshold: 2
             next_hop_asn: 3
-            no_of_times_announced: 3
+            no_of_times_announced: 4
             only_to_customers: null
             prefix: 1.2.0.0/16
             recv_relationship: !simulator_codec/Relationships
               name: ORIGIN
               value: 4
-            roa_origin: null
-            roa_valid_length: null
+            roa_origin: 2
+            roa_valid_length: true
             seed_asn: 3
             timestamp: 1
             traceback_end: false
@@ -129,8 +129,8 @@ as_graph: !yamlable/CAIDAASGraph
             recv_relationship: !simulator_codec/Relationships
               name: PROVIDERS
               value: 1
-            roa_origin: null
-            roa_valid_length: null
+            roa_origin: 2
+            roa_valid_length: true
             seed_asn: null
             timestamp: 0
             traceback_end: false
@@ -165,8 +165,8 @@ as_graph: !yamlable/CAIDAASGraph
             recv_relationship: !simulator_codec/Relationships
               name: PROVIDERS
               value: 1
-            roa_origin: null
-            roa_valid_length: null
+            roa_origin: 2
+            roa_valid_length: true
             seed_asn: null
             timestamp: 0
             traceback_end: false

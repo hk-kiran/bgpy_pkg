@@ -16,12 +16,14 @@ desc = (
     "Route Flap Dampening Defense Policy"
 
 )
+class CustomRFAttack(RouteFlapAttack):
+    random_flapping = False
 
 ex_config_030 = EngineTestConfig(
     name="ex_030_route_flap_attack_and_route_flap_dampening_policy",
     desc=desc,
     scenario_config=ScenarioConfig(
-        ScenarioCls=RouteFlapAttack,
+        ScenarioCls=CustomRFAttack,
         preprocess_anns_func=preprocess_anns_funcs.noop,
         BasePolicyCls=RouteFlapDampening,
         override_attacker_asns=frozenset({ASNs.ATTACKER.value}),

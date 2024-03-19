@@ -1,7 +1,7 @@
 scenario_cls,AdoptingPolicyCls,BasePolicyCls,PolicyCls,outcome_type,as_group,outcome,percent_adopt,propagation_round,value,yerr,scenario_config_label
-RouteFlapAttack,PseudoBGP,BGP,BGP,DATA,all_wout_ixps,ATTACKER_SUCCESS,0,4,40.0,0.0,
-RouteFlapAttack,PseudoBGP,BGP,Policy,DATA,all_wout_ixps,ATTACKER_SUCCESS,0,4,40.0,0.0,
-RouteFlapAttack,PseudoBGP,BGP,BGP,DATA,all_wout_ixps,VICTIM_SUCCESS,0,4,60.0,0.0,
-RouteFlapAttack,PseudoBGP,BGP,Policy,DATA,all_wout_ixps,VICTIM_SUCCESS,0,4,60.0,0.0,
-RouteFlapAttack,PseudoBGP,BGP,BGP,DATA,all_wout_ixps,DISCONNECTED,0,4,0.0,0.0,
-RouteFlapAttack,PseudoBGP,BGP,Policy,DATA,all_wout_ixps,DISCONNECTED,0,4,0.0,0.0,
+CustomRFAttack,PseudoBGP,BGP,BGP,DATA,all_wout_ixps,ATTACKER_SUCCESS,0,4,40.0,0.0,
+CustomRFAttack,PseudoBGP,BGP,Policy,DATA,all_wout_ixps,ATTACKER_SUCCESS,0,4,40.0,0.0,
+CustomRFAttack,PseudoBGP,BGP,BGP,DATA,all_wout_ixps,VICTIM_SUCCESS,0,4,60.0,0.0,
+CustomRFAttack,PseudoBGP,BGP,Policy,DATA,all_wout_ixps,VICTIM_SUCCESS,0,4,60.0,0.0,
+CustomRFAttack,PseudoBGP,BGP,BGP,DATA,all_wout_ixps,DISCONNECTED,0,4,0.0,0.0,
+CustomRFAttack,PseudoBGP,BGP,Policy,DATA,all_wout_ixps,DISCONNECTED,0,4,0.0,0.0,

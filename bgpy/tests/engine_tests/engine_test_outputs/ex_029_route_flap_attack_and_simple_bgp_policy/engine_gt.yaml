@@ -20,14 +20,14 @@ as_graph: !yamlable/CAIDAASGraph
             bgpsec_next_asn: null
             dampening_threshold: 2
             next_hop_asn: 666
-            no_of_times_announced: 3
+            no_of_times_announced: 4
             only_to_customers: null
             prefix: 1.2.0.0/16
             recv_relationship: !simulator_codec/Relationships
               name: CUSTOMERS
               value: 3
-            roa_origin: null
-            roa_valid_length: null
+            roa_origin: 777
+            roa_valid_length: true
             seed_asn: null
             timestamp: 1
             traceback_end: false
@@ -57,14 +57,14 @@ as_graph: !yamlable/CAIDAASGraph
             bgpsec_next_asn: null
             dampening_threshold: 2
             next_hop_asn: 666
-            no_of_times_announced: 3
+            no_of_times_announced: 4
             only_to_customers: null
             prefix: 1.2.0.0/16
             recv_relationship: !simulator_codec/Relationships
               name: CUSTOMERS
               value: 3
-            roa_origin: null
-            roa_valid_length: null
+            roa_origin: 777
+            roa_valid_length: true
             seed_asn: null
             timestamp: 1
             traceback_end: false
@@ -100,8 +100,8 @@ as_graph: !yamlable/CAIDAASGraph
             recv_relationship: !simulator_codec/Relationships
               name: PEERS
               value: 2
-            roa_origin: null
-            roa_valid_length: null
+            roa_origin: 777
+            roa_valid_length: true
             seed_asn: null
             timestamp: 0
             traceback_end: false
@@ -134,8 +134,8 @@ as_graph: !yamlable/CAIDAASGraph
             recv_relationship: !simulator_codec/Relationships
               name: CUSTOMERS
               value: 3
-            roa_origin: null
-            roa_valid_length: null
+            roa_origin: 777
+            roa_valid_length: true
             seed_asn: null
             timestamp: 0
             traceback_end: false
@@ -164,14 +164,14 @@ as_graph: !yamlable/CAIDAASGraph
             bgpsec_next_asn: null
             dampening_threshold: 2
             next_hop_asn: 1
-            no_of_times_announced: 3
+            no_of_times_announced: 4
             only_to_customers: null
             prefix: 1.2.0.0/16
             recv_relationship: !simulator_codec/Relationships
               name: CUSTOMERS
               value: 3
-            roa_origin: null
-            roa_valid_length: null
+            roa_origin: 777
+            roa_valid_length: true
             seed_asn: null
             timestamp: 1
             traceback_end: false
@@ -201,14 +201,14 @@ as_graph: !yamlable/CAIDAASGraph
             bgpsec_next_asn: null
             dampening_threshold: 2
             next_hop_asn: 1
-            no_of_times_announced: 3
+            no_of_times_announced: 4
             only_to_customers: null
             prefix: 1.2.0.0/16
             recv_relationship: !simulator_codec/Relationships
               name: CUSTOMERS
               value: 3
-            roa_origin: null
-            roa_valid_length: null
+            roa_origin: 777
+            roa_valid_length: true
             seed_asn: null
             timestamp: 1
             traceback_end: false
@@ -246,8 +246,8 @@ as_graph: !yamlable/CAIDAASGraph
             recv_relationship: !simulator_codec/Relationships
               name: CUSTOMERS
               value: 3
-            roa_origin: null
-            roa_valid_length: null
+            roa_origin: 777
+            roa_valid_length: true
             seed_asn: null
             timestamp: 0
             traceback_end: false
@@ -282,8 +282,8 @@ as_graph: !yamlable/CAIDAASGraph
             recv_relationship: !simulator_codec/Relationships
               name: CUSTOMERS
               value: 3
-            roa_origin: null
-            roa_valid_length: null
+            roa_origin: 777
+            roa_valid_length: true
             seed_asn: null
             timestamp: 0
             traceback_end: false
@@ -321,8 +321,8 @@ as_graph: !yamlable/CAIDAASGraph
             recv_relationship: !simulator_codec/Relationships
               name: CUSTOMERS
               value: 3
-            roa_origin: null
-            roa_valid_length: null
+            roa_origin: 777
+            roa_valid_length: true
             seed_asn: null
             timestamp: 0
             traceback_end: false
@@ -356,8 +356,8 @@ as_graph: !yamlable/CAIDAASGraph
             recv_relationship: !simulator_codec/Relationships
               name: CUSTOMERS
               value: 3
-            roa_origin: null
-            roa_valid_length: null
+            roa_origin: 777
+            roa_valid_length: true
             seed_asn: null
             timestamp: 0
             traceback_end: false
@@ -382,14 +382,14 @@ as_graph: !yamlable/CAIDAASGraph
             bgpsec_next_asn: null
             dampening_threshold: 2
             next_hop_asn: 666
-            no_of_times_announced: 3
+            no_of_times_announced: 4
             only_to_customers: null
             prefix: 1.2.0.0/16
             recv_relationship: !simulator_codec/Relationships
               name: ORIGIN
               value: 4
-            roa_origin: null
-            roa_valid_length: null
+            roa_origin: 777
+            roa_valid_length: true
             seed_asn: 666
             timestamp: 1
             traceback_end: false
@@ -422,8 +422,8 @@ as_graph: !yamlable/CAIDAASGraph
             recv_relationship: !simulator_codec/Relationships
               name: ORIGIN
               value: 4
-            roa_origin: null
-            roa_valid_length: null
+            roa_origin: 777
+            roa_valid_length: true
             seed_asn: 777
             timestamp: 0
             traceback_end: false

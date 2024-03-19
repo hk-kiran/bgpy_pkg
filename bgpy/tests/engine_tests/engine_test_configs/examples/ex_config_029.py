@@ -16,12 +16,14 @@ desc = (
     "No Defense Policy"
 
 )
+class CustomRFAttack(RouteFlapAttack):
+    random_flapping = False
 
 ex_config_029 = EngineTestConfig(
     name="ex_029_route_flap_attack_and_simple_bgp_policy",
     desc=desc,
     scenario_config=ScenarioConfig(
-        ScenarioCls=RouteFlapAttack,
+        ScenarioCls=CustomRFAttack,
         preprocess_anns_func=preprocess_anns_funcs.noop,
         BasePolicyCls=BGP,
         override_attacker_asns=frozenset({ASNs.ATTACKER.value}),
