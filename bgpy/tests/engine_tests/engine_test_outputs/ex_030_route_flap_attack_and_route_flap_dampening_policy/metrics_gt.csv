@@ -1,0 +1,10 @@
+scenario_cls,AdoptingPolicyCls,BasePolicyCls,PolicyCls,outcome_type,as_group,outcome,percent_adopt,propagation_round,value,yerr,scenario_config_label
+RouteFlapAttack,PseudoRouteFlapDampening,RouteFlapDampening,RouteFlapDampening,DATA,all_wout_ixps,ATTACKER_SUCCESS,0,4,0.0,0.0,
+RouteFlapAttack,PseudoRouteFlapDampening,RouteFlapDampening,BGP,DATA,all_wout_ixps,ATTACKER_SUCCESS,0,4,,0,
+RouteFlapAttack,PseudoRouteFlapDampening,RouteFlapDampening,Policy,DATA,all_wout_ixps,ATTACKER_SUCCESS,0,4,0.0,0.0,
+RouteFlapAttack,PseudoRouteFlapDampening,RouteFlapDampening,RouteFlapDampening,DATA,all_wout_ixps,VICTIM_SUCCESS,0,4,90.0,0.0,
+RouteFlapAttack,PseudoRouteFlapDampening,RouteFlapDampening,BGP,DATA,all_wout_ixps,VICTIM_SUCCESS,0,4,,0,
+RouteFlapAttack,PseudoRouteFlapDampening,RouteFlapDampening,Policy,DATA,all_wout_ixps,VICTIM_SUCCESS,0,4,90.0,0.0,
+RouteFlapAttack,PseudoRouteFlapDampening,RouteFlapDampening,RouteFlapDampening,DATA,all_wout_ixps,DISCONNECTED,0,4,10.0,0.0,
+RouteFlapAttack,PseudoRouteFlapDampening,RouteFlapDampening,BGP,DATA,all_wout_ixps,DISCONNECTED,0,4,,0,
+RouteFlapAttack,PseudoRouteFlapDampening,RouteFlapDampening,Policy,DATA,all_wout_ixps,DISCONNECTED,0,4,10.0,0.0,

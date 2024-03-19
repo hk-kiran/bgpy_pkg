@@ -13,6 +13,7 @@ from .custom_scenarios import SuperprefixPrefixHijack
 from .custom_scenarios import NonRoutedSuperprefixHijack
 from .custom_scenarios import NonRoutedSuperprefixPrefixHijack
 from .custom_scenarios import ValidPrefix
+from .custom_scenarios import RouteFlapAttack
 
 
 __all__ = [
@@ -29,4 +30,5 @@ __all__ = [
     "NonRoutedSuperprefixPrefixHijack",
     "ValidPrefix",
     "AccidentalRouteLeak",
+    "RouteFlapAttack",
 ]

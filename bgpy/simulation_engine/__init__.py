@@ -21,6 +21,7 @@ from .policies import Pathend
 from .policies import PathendFull
 from .policies import ASPA
 from .policies import ASPAFull
+from .policies import RouteFlapDampeningFull, RouteFlapDampening
 
 # Old - just keeping these around for backwards compatability
 from .policies import BGP as BGPSimplePolicy
@@ -80,4 +81,6 @@ __all__ = [
     "ASPAPolicy",
     "BaseSimulationEngine",
     "SimulationEngine",
+    "RouteFlapDampening",
+    "RouteFlapDampeningFull",
 ]

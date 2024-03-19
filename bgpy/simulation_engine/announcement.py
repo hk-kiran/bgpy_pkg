@@ -49,6 +49,9 @@ class Announcement(YamlAble):
     bgpsec_as_path: tuple[int, ...] = ()
     # RFC 9234 OTC attribute (Used in OnlyToCustomers Policy)
     only_to_customers: Optional[int] = None
+    # Route Flap Dampening metric
+    no_of_times_announced: int = 0
+    dampening_threshold: int = 2
 
     def __post_init__(self):
         """Defaults seed_asn and next_hop_asn"""
@@ -137,6 +140,16 @@ class Announcement(YamlAble):
         """Returns the origin of the announcement"""
 
         return self.as_path[-1]
+
+    @property
+    def below_threshold(self) -> bool:
+        """Returns True if Ann is below the dampening threshold
+        """
+
+        # check if the announce
+        if self.no_of_times_announced <= self.dampening_threshold:
+            return True
+        return False
 
     def __str__(self) -> str:
         return f"{self.prefix} {self.as_path} {self.recv_relationship}"

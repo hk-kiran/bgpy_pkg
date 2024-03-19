@@ -62,11 +62,11 @@ class Diagram:
           <TD COLSPAN="2" BORDER="0">(For most specific prefix only)</TD>
               </TR>
               <TR>
-          <TD BGCOLOR="#ff6060:white">&#128520; ATTACKER SUCCESS &#128520;</TD>
+          <TD BGCOLOR="#ff6060:white">&#128520; NODES AFFECTED &#128520;</TD>
                 <TD>{attacker_success_count}</TD>
               </TR>
               <TR>
-         <TD BGCOLOR="#90ee90:white">&#128519; VICTIM SUCCESS &#128519;</TD>
+         <TD BGCOLOR="#90ee90:white">&#128519; NODES UNAFFECTED &#128519;</TD>
                 <TD>{victim_success_count}</TD>
               </TR>
               <TR>

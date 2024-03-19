@@ -11,6 +11,7 @@ from .bgpsec import BGPSec
 from .only_to_customers import OnlyToCustomers, OnlyToCustomersFull
 from .pathend import Pathend, PathendFull
 from .aspa import ASPA, ASPAFull
+from .route_flap_dampening import RouteFlapDampeningFull, RouteFlapDampening
 
 __all__ = [
     "BGP",
@@ -28,4 +29,6 @@ __all__ = [
     "PathendFull",
     "ASPA",
     "ASPAFull",
+    "RouteFlapDampening",
+    "RouteFlapDampeningFull",
 ]
