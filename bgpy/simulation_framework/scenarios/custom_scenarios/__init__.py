@@ -7,6 +7,7 @@ from .non_routed_superprefix_hijack import NonRoutedSuperprefixHijack
 from .non_routed_superprefix_prefix_hijack import NonRoutedSuperprefixPrefixHijack
 from .valid_prefix import ValidPrefix
 from .route_flap_attack import RouteFlapAttack
+from .route_flap_attack_full import RouteFlapAttackFull
 
 __all__ = [
     "AccidentalRouteLeak",
@@ -18,4 +19,5 @@ __all__ = [
     "NonRoutedSuperprefixPrefixHijack",
     "ValidPrefix",
     "RouteFlapAttack",
+    "RouteFlapAttackFull",
 ]

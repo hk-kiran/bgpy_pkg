@@ -10,7 +10,7 @@ if TYPE_CHECKING:
     from bgpy.simulation_engine import BaseSimulationEngine
 
 
-class RouteFlapAttack(Scenario):
+class RouteFlapAttackFull(Scenario):
     """Route flap attack engine input"""
     min_propagation_rounds = 5
     random_flapping = True
